@@ -29,5 +29,10 @@
             "pre-push": "npm run test",
             "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
+    },
+    "dependencies": {
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "pg": "^8.14.1"
     }
 }
