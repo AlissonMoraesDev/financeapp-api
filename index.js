@@ -1,2 +1,2 @@
-const name = 'novidade'
-console.log(name)
+const nameFull = ''
+console.log(nameFull)
