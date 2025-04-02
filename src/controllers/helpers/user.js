@@ -21,6 +21,9 @@ export const invalidUserResponse = () =>
         message: 'User not found!',
     })
 
+export const userNotFoundResponse = () =>
+    notFound({ message: 'User not found.' })
+
 export const checkIfPasswordIsValid = (password) => password.length >= 6
 
 export const checkIfEmailIsValid = (email) => validator.isEmail(email)
