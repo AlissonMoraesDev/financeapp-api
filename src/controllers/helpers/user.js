@@ -1,5 +1,5 @@
 import validator from 'validator'
-import { badRequest, notFound } from './http'
+import { badRequest, notFound } from './http.js'
 
 export const invalidPasswordResponse = () =>
     badRequest({
