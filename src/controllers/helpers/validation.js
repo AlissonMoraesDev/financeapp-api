@@ -16,7 +16,7 @@ export const validateRequiredFields = (params, requiredFields) => {
         const fieldIsEmpty =
             checkIfIsString(params[field]) &&
             validator.isEmpty(params[field], {
-                ignore_whitespace: false,
+                ignore_whitespace: true,
             })
         if (fieldIsMissing || fieldIsEmpty) {
             return {
