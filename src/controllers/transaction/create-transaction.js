@@ -5,7 +5,7 @@ import {
     checkIdIsValid,
     invalidIdResponse,
     serverError,
-    validateRequiredFields,
+    created,
 } from '../helpers/index.js'
 
 export class CreateTransactionController {
@@ -15,24 +15,27 @@ export class CreateTransactionController {
     async execute(httpRequest) {
         try {
             const params = httpRequest.body
-            const requiredFields = [
-                'id',
-                'user_id',
-                'name',
-                'date',
-                'amount',
-                'type',
-            ]
+            const requiredFields = ['user_id', 'name', 'date', 'amount', 'type']
 
-            const requiredFieldsValidation = validateRequiredFields(
-                params,
-                requiredFields,
-            )
+            console.log(params)
 
-            if (!requiredFieldsValidation) {
-                return badRequest({
-                    message: `The field "${requiredFieldsValidation.missingField}" is required.`,
-                })
+            // const requiredFieldsValidation = validateRequiredFields(
+            //     params,
+            //     requiredFields,
+            // )
+
+            // if (!requiredFieldsValidation) {
+            //     return badRequest({
+            //         message: `The field "${requiredFieldsValidation.missingField}" is required.`,
+            //     })
+            // }
+            for (const field of requiredFields) {
+                if (
+                    !params[field] ||
+                    params[field].toString().trim().length === 0
+                ) {
+                    return badRequest({ message: `Missing param: ${field}` })
+                }
             }
 
             const userIdIsValid = checkIdIsValid(params.user_id)
@@ -61,7 +64,7 @@ export class CreateTransactionController {
 
             const type = params.type.trim().toUpperCase()
 
-            const typeIsValid = !['EARNING', 'EXPENSE', 'INVESTMENT'].includes(
+            const typeIsValid = ['EARNING', 'EXPENSE', 'INVESTMENT'].includes(
                 type,
             )
 
@@ -71,10 +74,10 @@ export class CreateTransactionController {
                 })
             }
 
-            const transaction = await this.createTransactionUseCase.execute(
+            const transaction = await this.createTransactionUseCase.execute({
                 ...params,
                 type,
-            )
+            })
 
             return created(transaction)
         } catch (error) {

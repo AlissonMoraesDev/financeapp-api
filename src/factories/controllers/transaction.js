@@ -5,7 +5,7 @@ import {
 } from '../../repositories/postgres/index.js'
 import { CreateTransactionUseCase } from '../../use-cases/index.js'
 
-export const makeCraeteTransactionController = () => {
+export const makeCreateTransactionController = () => {
     const createTransactionRepository =
         new PostgresCreateTransactionRepository()
     const getUserByIdRepository = new PostgresGetUserByIdRepository()
