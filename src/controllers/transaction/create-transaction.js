@@ -7,6 +7,7 @@ import {
     serverError,
     created,
     validateRequiredFields,
+    requiredFieldMissingresponse,
 } from '../helpers/index.js'
 
 export class CreateTransactionController {
@@ -22,9 +23,7 @@ export class CreateTransactionController {
                 validateRequiredFields(params, requiredFields)
 
             if (!requiredFieldWereProvided) {
-                return badRequest({
-                    message: `The field ${missingField} is required.`,
-                })
+                return requiredFieldMissingresponse(missingField)
             }
 
             const userIdIsValid = checkIdIsValid(params.user_id)
