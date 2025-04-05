@@ -1,7 +1,7 @@
 import { EmailAlreadyInUseError } from '../../errors/user.js'
 import {
     checkIfEmailIsValid,
-    checkIfIdUserIsValid,
+    checkIdIsValid,
     checkIfPasswordIsValid,
     emailIsAlreadyInUseResponse,
     invalidPasswordResponse,
@@ -18,7 +18,7 @@ export class UpdateUserController {
         try {
             const userId = httpRequest.params.userId
 
-            const isIdValid = checkIfIdUserIsValid(userId)
+            const isIdValid = checkIdIsValid(userId)
 
             if (!isIdValid) {
                 return badRequest({

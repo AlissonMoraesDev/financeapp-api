@@ -2,7 +2,7 @@ import validator from 'validator'
 
 import {
     badRequest,
-    checkIfIdUserIsValid,
+    checkIdIsValid,
     invalidIdResponse,
     serverError,
 } from '../helpers/index.js'
@@ -29,7 +29,7 @@ export class CreateTransactionController {
                 }
             }
 
-            const userIdIsValid = checkIfIdUserIsValid(params.user_id)
+            const userIdIsValid = checkIdIsValid(params.user_id)
 
             if (!userIdIsValid) {
                 return invalidIdResponse()

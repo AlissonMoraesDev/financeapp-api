@@ -1,6 +1,6 @@
 import {
     serverError,
-    checkIfIdUserIsValid,
+    checkIdIsValid,
     invalidIdResponse,
     ok,
     userNotFoundResponse,
@@ -14,7 +14,7 @@ export class DeleteUserController {
         try {
             const userId = httpRequest.params.userId
 
-            const idIsValid = checkIfIdUserIsValid(userId)
+            const idIsValid = checkIdIsValid(userId)
 
             if (!idIsValid) {
                 return invalidIdResponse()

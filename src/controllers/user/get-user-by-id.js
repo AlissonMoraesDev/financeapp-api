@@ -1,5 +1,5 @@
 import {
-    checkIfIdUserIsValid,
+    checkIdIsValid,
     invalidIdResponse,
     userNotFoundResponse,
     ok,
@@ -12,7 +12,7 @@ export class GetUserByIdController {
     }
     async execute(httpRequest) {
         try {
-            const isIdValid = checkIfIdUserIsValid(httpRequest.params.userId)
+            const isIdValid = checkIdIsValid(httpRequest.params.userId)
 
             if (!isIdValid) {
                 return invalidIdResponse()
