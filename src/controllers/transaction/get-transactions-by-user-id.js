@@ -2,13 +2,13 @@ import { UserNotFoundError } from '../../errors/user.js'
 import {
     checkIdIsValid,
     invalidIdResponse,
-    requiredFieldMissingresponse,
+    requiredFieldMissingResponse,
     serverError,
     userNotFoundResponse,
     ok,
-} from '../helpers'
+} from '../helpers/index.js'
 
-export class GetTransactionsByUserId {
+export class GetTransactionsByUserIdController {
     constructor(getTransactionsByUserIdUseCase) {
         this.getTransactionsByUserIdUseCase = getTransactionsByUserIdUseCase
     }
@@ -17,7 +17,7 @@ export class GetTransactionsByUserId {
             const userId = httpRequest.query.userId
 
             if (!userId) {
-                return requiredFieldMissingresponse('userId')
+                return requiredFieldMissingResponse('userId')
             }
 
             const userIdIsValid = checkIdIsValid(userId)
@@ -30,6 +30,8 @@ export class GetTransactionsByUserId {
                 await this.getTransactionsByUserIdUseCase.execute({
                     userId,
                 })
+
+            console.log(transactions)
 
             return ok(transactions)
         } catch (error) {

@@ -5,7 +5,7 @@ import {
     serverError,
     created,
     validateRequiredFields,
-    requiredFieldMissingresponse,
+    requiredFieldMissingResponse,
     checkIfAmountIsValid,
     checkIsTypeValid,
     invalidAmountResponse,
@@ -25,7 +25,7 @@ export class CreateTransactionController {
                 validateRequiredFields(params, requiredFields)
 
             if (!requiredFieldWereProvided) {
-                return requiredFieldMissingresponse(missingField)
+                return requiredFieldMissingResponse(missingField)
             }
 
             const userIdIsValid = checkIdIsValid(params.user_id)
