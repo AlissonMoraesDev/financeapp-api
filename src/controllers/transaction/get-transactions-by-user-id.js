@@ -31,8 +31,6 @@ export class GetTransactionsByUserIdController {
                     userId,
                 })
 
-            console.log(transactions)
-
             return ok(transactions)
         } catch (error) {
             console.log(error)
