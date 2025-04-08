@@ -1,7 +1,7 @@
 import { PostgresHelper } from '../../../db/postgres/helper.js'
 
 export class PostgresUpdateTransactionRepository {
-    async execute(userId, UpdateTransactionParams) {
+    async execute(transactionId, UpdateTransactionParams) {
         const updateFields = []
         const updateValues = []
 
@@ -10,7 +10,7 @@ export class PostgresUpdateTransactionRepository {
             updateValues.push(UpdateTransactionParams[key])
         })
 
-        updateValues.push(userId)
+        updateValues.push(transactionId)
 
         const updateQuery = `
       UPDATE transactions
