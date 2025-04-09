@@ -125,6 +125,15 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.TransactionScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  name: 'name',
+  date: 'date',
+  amount: 'amount',
+  type: 'type'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -134,10 +143,15 @@ exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
-
+exports.TransactionType = exports.$Enums.TransactionType = {
+  EARNING: 'EARNING',
+  EXPENSE: 'EXPENSE',
+  INVESTMENT: 'INVESTMENT'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Transaction: 'Transaction'
 };
 
 /**
