@@ -38,11 +38,13 @@ export class PostgresGetUserBalanceRepository {
             },
         })
 
-        const _totalEarnings = totalEarnings || 0
-        const _totalExpenses = totalExpenses || 0
-        const _totalInvestments = totalInvestments || 0
+        const _totalEarnings = totalEarnings || Number(0).toFixed(2)
+        const _totalExpenses = totalExpenses || Number(0).toFixed(2)
+        const _totalInvestments = totalInvestments || Number(0).toFixed(2)
 
-        const balance = _totalEarnings - _totalExpenses - _totalInvestments
+        const balance = Number(
+            _totalEarnings - _totalExpenses - _totalInvestments,
+        ).toFixed(2)
 
         return {
             earnings: _totalEarnings,
