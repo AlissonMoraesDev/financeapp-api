@@ -15,12 +15,15 @@ export const createTransactionSchema = z.object({
         })
         .trim()
         .min(1, {
-            message: 'Name is required',
+            message: 'Name must have at 1 character',
         }),
-    date: z.coerce.date({
-        message: 'Date is format invalid',
-        required_error: 'Data is required.',
-    }),
+    date: z
+        .string({
+            message: 'Date is required.',
+        })
+        .datetime({
+            message: 'Date must be a valid date.',
+        }),
     type: z.enum(['EXPENSE', 'EARNING', 'INVESTMENT'], {
         errorMap: () => ({
             message: 'Type must be EXPENSE, EARNING or INVESTMENT',
